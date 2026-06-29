@@ -26,17 +26,6 @@ Dashboard em Python/Dash para estudos do **5º módulo de Direito da UFLA**, cal
 - Anotações persistentes em SQLite local.
 - Aba **Personalizar** para adicionar temas próprios pelo próprio dashboard, sem abrir CSV. Os temas personalizados entram nos gráficos, rankings e tabelas.
 
-## Como rodar
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-python -m pip install -r requirements.txt
-python app.py
-```
-
-Abra: `http://127.0.0.1:8050`
-
 ## Dados editáveis
 
 - `data/disciplinas_5_periodo.csv`
