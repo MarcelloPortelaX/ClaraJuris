@@ -8,7 +8,7 @@ from typing import Iterable
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
-from dash import Dash, Input, Output, State, dash_table, dcc, html
+from dash import Dash, Input, Output, State, clientside_callback, dash_table, dcc, html
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -663,7 +663,7 @@ app.layout = html.Div(
     id="app-shell",
     className="app-shell theme-light",
     children=[
-        dcc.Store(id="theme-store", data="light"),
+        dcc.Store(id="theme-store", data="light", storage_type="local"),
         dcc.Store(id="notes-refresh", data=0),
         dcc.Store(id="topics-refresh", data=0),
         html.Aside(
@@ -774,16 +774,21 @@ app.layout = html.Div(
 )
 
 
-@app.callback(
+clientside_callback(
+    """
+    function(n_clicks, currentTheme) {
+        const previous = currentTheme === "dark" ? "dark" : "light";
+        const theme = n_clicks ? (previous === "dark" ? "light" : "dark") : previous;
+        const label = theme === "dark" ? "Tema claro" : "Tema escuro";
+        return [theme, label, "app-shell theme-" + theme];
+    }
+    """,
     Output("theme-store", "data"),
     Output("theme-toggle", "children"),
     Output("app-shell", "className"),
     Input("theme-toggle", "n_clicks"),
+    State("theme-store", "data"),
 )
-def toggle_theme(n_clicks):
-    theme = "dark" if int(n_clicks or 0) % 2 else "light"
-    label = "Tema claro" if theme == "dark" else "Tema escuro"
-    return theme, label, f"app-shell theme-{theme}"
 
 
 @app.callback(
