@@ -627,3 +627,29 @@ label { color: var(--wine); font-weight: 800; font-size: .88rem; margin-bottom: 
 .form-grid input[type="number"] {
   appearance: textfield;
 }
+
+/* Correção de legibilidade dos gráficos de concursos: evita legenda em cima das barras e dá largura real aos temas longos. */
+.exam-chart-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+.chart-panel {
+  overflow: hidden;
+}
+.chart-panel .dash-graph,
+.chart-panel .js-plotly-plot,
+.chart-panel .plot-container {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+.storage-status,
+.storage-box p {
+  color: var(--muted);
+}
+.storage-box {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: var(--surface-tint);
+  border: 1px solid var(--line);
+}

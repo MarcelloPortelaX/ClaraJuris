@@ -7,7 +7,7 @@ Você está trabalhando no ClaraJuris Dashboard, um app Python/Dash inspirado na
 1. Não trocar Dash por Streamlit ou outro framework sem autorização explícita.
 2. Manter a identidade visual rosa, responsiva e alternável entre tema claro e escuro em `assets/style.css`. O botão `theme-toggle`, o `dcc.Store(id="theme-store")` e a classe `app-shell theme-light/theme-dark` não devem ser removidos.
 3. Preservar as abas: Resumo, Matérias, Concursos, Biblioteca, Anotações, Plano, Personalizar e Dados.
-4. Preservar o SQLite em `data/anotacoes.db`, incluindo anotações e temas personalizados.
+4. Preservar a camada de persistência por SQLAlchemy: usar `DATABASE_URL` para PostgreSQL/Supabase/Neon em produção e fallback SQLite em `data/anotacoes.db` localmente. Anotações e temas personalizados não podem voltar a ser dados voláteis.
 5. Manter textos visíveis neutros, elegantes e úteis. Evitar sarcasmo dentro da interface.
 6. Não remover os gráficos de concurso X:
    - qual matéria cai mais em concurso X;
@@ -21,16 +21,17 @@ Você está trabalhando no ClaraJuris Dashboard, um app Python/Dash inspirado na
    - GDI263 — Direito Processual Civil II.
 8. Preservar a biblioteca com 10 livros por matéria e os links `url_amazon`.
 9. Preservar a base de 60 temas, com 12 temas por matéria.
-10. Preservar a aba Personalizar e a tabela SQLite `temas_personalizados`, porque ela permite que a usuária complete o painel sem editar CSV.
+10. Preservar a aba Personalizar e a tabela `temas_personalizados`, porque ela permite que a usuária complete o painel sem editar CSV. Esses dados devem ser salvos no banco configurado e recarregados nos gráficos, rankings e tabelas.
 11. Se adicionar livros, manter colunas compatíveis em `data/livros_direito.csv`.
 12. Se mudar pesos de concurso, documentar no README.
 13. Evitar grades fixas que possam quebrar em telas menores. Preferir `auto-fit`, `minmax` e textos com `overflow-wrap`/clamp.
 14. Ao criar novos gráficos Plotly, receber o parâmetro `theme` e passar por `base_fig(..., theme)`, para o tema escuro atualizar imediatamente junto com a interface.
+15. Não recolocar gráficos de temas longos em colunas estreitas. O gráfico “Top temas para concurso X” deve permanecer em painel largo, com legenda fora da área das barras.
 
 ## Próximos upgrades bons
 
 - Adicionar status por tema: não iniciado, estudando, revisado, dominado.
-- Salvar progresso em SQLite.
+- Salvar progresso no banco configurado via SQLAlchemy.
 - Permitir marcar livro como “quero ler”, “lendo”, “lido”.
 - Exportar plano de estudos em PDF.
 - Adicionar importação de provas/editais para calibrar estatística real por banca.
