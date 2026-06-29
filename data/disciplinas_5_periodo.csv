@@ -1,0 +1,6 @@
+id,codigo,materia,eixo,professor_placeholder,creditos,carga_horaria_estimada,pre_requisito,peso_periodo,foco_calibrado,observacao
+1,GDI117,Direito Civil IV,Direito Privado,A confirmar,4,68,GDI111,5,Contratos,5º módulo informado pelo usuário; calibrado como Direito dos Contratos.
+2,GDI126,Direito do Trabalho I,Direito Social / Trabalho,A confirmar,4,68,-,5,"Fundamentos, princípios e relação de emprego","5º módulo informado pelo usuário; ementa pública do SIG/UFLA menciona fundamentos históricos, vulnerabilidade e princípios."
+3,GDI157,Ética Profissional,Formação Profissional,A confirmar,2,34,-,3,"Ética jurídica, OAB e profissões jurídicas","5º módulo informado pelo usuário; ementa pública do SIG/UFLA menciona ética, moral, direito, política e profissões jurídicas."
+4,GDI176,Direito Penal IV,Direito Penal,A confirmar,4,68,GDI109,5,"Parte Especial: dignidade sexual, incolumidade pública e temas finais",5º módulo informado pelo usuário; ementa pública do SIG/UFLA menciona crimes contra dignidade sexual e incolumidade pública.
+5,GDI263,Direito Processual Civil II,Processo Civil,A confirmar,4,68,-,5,"Processo de conhecimento, prova, decisão, tutela e coisa julgada",5º módulo informado pelo usuário; temas calibrados por bibliografia padrão de Processo Civil II.
